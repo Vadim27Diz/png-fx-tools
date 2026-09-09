@@ -1,0 +1,275 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-small);
+  padding: var(--space-small) var(--space-medium);
+  border-bottom: 1px solid var(--figma-color-border);
+  flex: none;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.previewPane {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--figma-color-border);
+}
+
+.previewSurface {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.checkerboard {
+  background-color: var(--figma-color-bg-secondary);
+  background-image: linear-gradient(45deg, var(--figma-color-bg-tertiary) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--figma-color-bg-tertiary) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--figma-color-bg-tertiary) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--figma-color-bg-tertiary) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.previewMessage {
+  padding: 0 var(--space-medium);
+  text-align: center;
+  color: var(--figma-color-text-secondary);
+}
+
+.previewToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-small);
+  padding: var(--space-extra-small) var(--space-small);
+  border-top: 1px solid var(--figma-color-border);
+  flex: none;
+}
+
+.previewStage {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  touch-action: none;
+}
+
+.previewCanvas {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.zoomControl {
+  display: flex;
+  align-items: center;
+  gap: var(--space-extra-small);
+  flex: none;
+}
+
+.zoomResetButton {
+  font: inherit;
+  font-size: 11px;
+  color: var(--figma-color-text-brand);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.zoomResetButton:disabled {
+  color: var(--figma-color-text-disabled);
+  cursor: default;
+}
+
+.utilitiesPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-small);
+  padding: var(--space-small);
+  border-top: 1px solid var(--figma-color-border);
+}
+
+.settingsPane {
+  width: 260px;
+  flex: none;
+  overflow-y: auto;
+}
+
+.moduleRow {
+  border-bottom: 1px solid var(--figma-color-border);
+}
+
+.moduleHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-small);
+  padding: var(--space-small);
+}
+
+.moduleTitleButton {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-extra-small);
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.moduleTitleButton:not(:disabled) {
+  cursor: pointer;
+}
+
+.moduleTitleButton:disabled {
+  color: var(--figma-color-text-disabled);
+}
+
+.moduleSummary {
+  color: var(--figma-color-text-secondary);
+}
+
+.moduleBody {
+  padding: 0 var(--space-small) var(--space-medium);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-small);
+}
+
+.moduleDescriptionRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-small);
+}
+
+.moduleDescription {
+  color: var(--figma-color-text-secondary);
+}
+
+.presetsBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-extra-small);
+  padding: var(--space-small);
+  border-bottom: 1px solid var(--figma-color-border);
+}
+
+.presetsDropdown {
+  flex: 1;
+  min-width: 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-extra-small);
+  padding: var(--space-small) var(--space-medium);
+  border-top: 1px solid var(--figma-color-border);
+  flex: none;
+}
+
+.footerStatusRow {
+  display: flex;
+  align-items: center;
+}
+
+.footerControls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-small);
+}
+
+.footerSpacer {
+  flex: 1;
+}
+
+.footerStatus {
+  color: var(--figma-color-text-danger);
+}
+
+/* Wraps every module's own set of control rows (AlphaControls,
+   LevelsControls, etc.). Row-to-row vertical spacing lives here rather
+   than as a flex `gap`, so it can vary by what's adjacent: 8px between
+   two fields in a row, 16px right after a selector (see below) — a
+   single `gap` can only ever be one value. */
+.controlsStack {
+  display: flex;
+  flex-direction: column;
+}
+
+.controlsStack > * + * {
+  margin-top: var(--space-extra-small);
+}
+
+.controlsStack > .controlRow + .sliderRow {
+  margin-top: var(--space-medium);
+}
+
+.controlRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-small);
+}
+
+.controlLabel {
+  flex: none;
+  /* Fixed rather than auto-width, so every slider's track lands at the
+     same width regardless of its label's length ("Hue" vs. "Seam
+     feather") — otherwise a longer label ate into the track and made
+     that module's sliders visibly shorter than the others. `display`
+     has to move off the default inline for a <span>, or `width` is
+     simply ignored by the box model — it's only defined for
+     block/inline-block/flex/grid boxes. */
+  display: inline-block;
+  width: 84px;
+  color: var(--figma-color-text-secondary);
+  white-space: nowrap;
+}
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-small);
+}
+
+.sliderTrack {
+  flex: 1;
+}
+
+.sliderValue {
+  width: 36px;
+  flex: none;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--figma-color-text-secondary);
+}

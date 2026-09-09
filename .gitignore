@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+*.css.d.ts
+/build/
+/manifest.json
+/src/generated/
+node_modules/
+/assets/
+/PNG_FX_Tools.html
